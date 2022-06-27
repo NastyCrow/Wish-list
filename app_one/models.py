@@ -1,4 +1,3 @@
-from tkinter import CASCADE
 from django.db import models
 import datetime
 # Create your models here.
@@ -52,7 +51,7 @@ class User(models.Model):
     
 class Item(models.Model):
     name = models.CharField(max_length=255)
-    created_by = models.ForeignKey(User,related_name="created_items",on_delete=CASCADE)
+    created_by = models.ForeignKey(User,related_name="created_items",on_delete=models.CASCADE)
     user_who_wish = models.ManyToManyField(User, related_name="whish_list")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
