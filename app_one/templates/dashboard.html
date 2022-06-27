@@ -1,0 +1,55 @@
+{%extends 'base.html'%} 
+{%block title%}My Wish List{%endblock%} 
+{%block content%}
+<h1>Hello {{user.name}}</h1>
+<h5 class="mt-5">Your whish list:</h5>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <td>Item</td>
+      <td>Added by</td>
+      <td>Date Added</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    {%for item in user.whish_list.all%}
+    <tr>
+      <td><a href="wish_items/{{item.id}}">{{item.name}}</a></td>
+      <td>{{item.created_by.name}}</td>
+      <td>{{item.created_at}}</td>
+      {%if item.created_by.id == user.id %}
+      <td><a href="/delete_item/{{item.id}}">Delete</a></td>
+      {%else%}
+      <td><a href="/remove_item/{{item.id}}">Remove from wish list</a></td>
+      {%endif%}
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+<h5 class="mt-5">Others Users' Wish List:</h5>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <td>Item</td>
+      <td>Added by</td>
+      <td>Date Added</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    {%for item in all_items%}
+    <tr>
+      <td><a href="wish_items/{{item.id}}">{{item.name}}</a></td>
+      <td>{{item.created_by.name}}</td>
+      <td>{{item.created_at}}</td>
+      <td><a href="/add_item/{{item.id}}">Add to my Wishlist</a></td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+<div class="text-end">
+  <a class="btn btn-primary" href="wish_items/create">Add item</a>
+</div>
+{%endblock%}

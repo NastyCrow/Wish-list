@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+{%block title%}Log & Registration{%endblock%}
+{%block content%}
+<h1 class="mt-4 mb-3">Welcome!</h1>
+<section class="d-flex">
+    <div class="row">
+        <div class="col">
+            <fieldset class="border p-2">
+                <legend  class="w-auto" style=" float: none; padding: inherit;">Registrations</legend>
+            <form class="m-3 row" action="register" method="POST">
+                {%csrf_token %}
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="name">First name:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="name" name="name" type="text">
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="username">Username:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="username" name="username" type="username">
+                    </div>
+                </div>
+
+
+                <div class="row mb-3 align-items-center">
+                    <small class="text-start p-2">*Password should be at least 8 characters long</small>
+                    <label class="col-sm-4 col-form-label" for="password">Password:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="password" name="password" type="password">
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="password_confirm">Confirm PW:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="password_confirm" name="password_confirm" type="password">
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="hired_date">Date Hired:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="hired_date" name="hired_date" type="date">
+                    </div>
+                </div>
+                <div class="mt-3 text-end">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </fieldset>
+        </div>
+
+         
+        <div class="col">
+            <fieldset class="border p-2">
+                <legend  class="w-auto" style=" float: none; padding: inherit;">Login</legend>
+            <form class="m-3 row" action="login" method="POST">
+                {%csrf_token %}
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="username">Username</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="username" name="username" type="text">
+                    </div>
+                </div>
+
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label" for="password">Password</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="password" name="password" type="password">
+                    </div>
+                </div>
+                <div class="mt-3 text-end">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+        </fieldset>
+        </div>
+    </div>
+    </div>
+</section>
+{%endblock%}
